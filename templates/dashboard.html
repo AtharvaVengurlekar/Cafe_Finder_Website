@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url("{{ url_for('static', filename='images/nathan-dumlao-Y3AqmbmtLQI-unsplash.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            color: rgb(253, 249, 249);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 48px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: rgba(63, 64, 65, 0.8);
+            color: white; /* Updated color */
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        a:hover {
+            background-color: rgba(28, 89, 138, 0.8);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .about-us {
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        .about-us h3 {
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .about-us p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to Cafe Finder!</h2>
+
+    <!-- Button group for Register and Login -->
+    <div class="button-group">
+        <a href="{{ url_for('register') }}">Register</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('owner_dashboard') }}">Own your cafe?</a> <!-- Changed text color to white -->
+    </div>
+
+    <!-- About Us section -->
+    <div class="about-us">
+        <h3>About Us</h3>
+        <p>
+            At Café Finder, we are passionate about helping you discover the perfect café to match your vibe. 
+            Whether you're looking for a quiet spot to work or a cozy place to meet friends, we've got you covered.
+            Explore our curated selection of cafés with all the features you need to make your visit unforgettable.
+        </p>
+    </div>
+</body>
+</html>
