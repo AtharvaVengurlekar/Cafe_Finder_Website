@@ -1,120 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Filters</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url("{{ url_for('static', filename='images/pexels-thought-catalog-317580-904616.jpg') }}") no-repeat center center fixed; 
-            background-size: cover; 
-            color: #333;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            background: url("{{ url_for('static', filename='images/alexandra-gorn-9rmnzkmydSY-unsplash.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h2 {
-            text-align: center;
-            margin-top: 20px;
-            color: #fff;
+            margin-bottom: 20px;
+            font-size: 36px;
+            color: #333;
         }
 
         .filter-grid {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 filters per row */
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .filter-grid label {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin: 0 5px;
-            transition: background-color 0.3s;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            background-color: #ececec;
+            padding: 10px;
+            border-radius: 8px;
             cursor: pointer;
-        }
-
-        .filter-grid input {
-            margin-right: 5px;
         }
 
         .filter-button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 10px;
-            background-color: #2980b9;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .filter-button:hover {
+            background-color: #45a049;
         }
 
         .container {
             display: flex;
             justify-content: space-between;
-            margin: 20px auto;
+            width: 100%;
             max-width: 1200px;
-            padding: 10px;
         }
 
         .cafe-list {
-            flex: 1;
-            margin-right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
+            width: 35%;
+            background-color: #fff;
             padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            height: 500px;
         }
 
         .cafe-list h3 {
-            cursor: pointer;
+            font-size: 20px;
+            margin: 15px 0;
             padding: 10px;
-            font-size: 1.2em;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 10px 0;
-            background: rgba(255, 255, 255, 0.9);
-            transition: background-color 0.3s, color 0.3s;
+            background-color: #f1f1f1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .cafe-list h3:hover {
-            background-color: #f1f1f1;
-            color: #2980b9;
+            background-color: #ddd;
         }
 
         .map-container {
-            flex: 1;
-            padding-left: 20px;
+            width: 60%;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        iframe {
+        .map-container iframe {
             width: 100%;
             height: 500px;
             border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
         }
 
         .logout-button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #c0392b;
+            background-color: #ff3333;
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            width: 200px;
+            margin-top: 30px;
         }
 
         .logout-button:hover {
-            background-color: #a93226;
+            background-color: #e60000;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cafe-list, .map-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .filter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -159,4 +169,3 @@
         }
     </script>
 </body>
-</html>
